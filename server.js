@@ -14,15 +14,10 @@ app.use(express.json())
 
 app.use(express.static('public'))
 
-// db connection
-mongoose.connect('mongodb://localhost/Transaction', {
-  useNewUrlParser: true,
-  useFindAndModify: false
-})
-
 // routes
 app.use(require('./routes/api.js'))
 
+// db connection
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost/Transaction',
   {
