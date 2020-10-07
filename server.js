@@ -23,6 +23,16 @@ mongoose.connect('mongodb://localhost/budget', {
 // routes
 app.use(require('./routes/api.js'))
 
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/Transaction',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
+
 // running app on server
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`)
